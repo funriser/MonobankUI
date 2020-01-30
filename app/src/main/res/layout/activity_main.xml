@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".MainActivity">
+
+    <com.funrisestudio.uipack.CollapsibleToolbar
+        android:id="@+id/layoutToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
+        android:minHeight="100dp"
+        app:layout_behavior=".CustomToolbarBehavior"
+        app:layoutDescription="@xml/motion_balance_details"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <TextView
+            android:id="@+id/tvBalance"
+            android:text="500.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tvBalanceDetails"
+            android:text="Balance description: 500.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/black" />
+
+    </com.funrisestudio.uipack.CollapsibleToolbar>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardPayments"
+        style="@style/PackCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="300dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPayments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <FrameLayout
+        android:id="@+id/containerPanelActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/cardPayments"
+        app:layout_anchorGravity="center_horizontal"
+        android:layout_gravity="top|center_horizontal"
+        android:paddingBottom="20dp">
+
+        <FrameLayout
+            android:id="@+id/panelActions"
+            android:layout_width="220dp"
+            android:layout_height="80dp"
+            android:background="@android:color/black"/>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
