@@ -2,66 +2,52 @@ package com.funrisestudio.uipack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.FrameMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
-import android.widget.FrameLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_payment.view.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
-    private lateinit var collapsibleBehavior: CustomToolbarBehavior
-
-    private val adapter = PaymentAdapter()
+    private lateinit var adapter: PaymentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initView()
+    }
+
+    private fun initView() {
+        setUpRecycler()
+        setUpBottomSheet()
+    }
+
+    private fun setUpRecycler() {
+        adapter = PaymentAdapter()
         rvPayments.layoutManager = LinearLayoutManager(this)
         rvPayments.adapter = adapter
         populatePayments()
+    }
 
-        bottomSheetBehavior = BottomSheetBehavior.from(cardPayments)
-        bottomSheetBehavior.addBottomSheetCallback(cardSlideCallback)
-        collapsibleBehavior = (layoutToolbar.layoutParams as CoordinatorLayout.LayoutParams).behavior as CustomToolbarBehavior
-        collapsibleBehavior.collapseOffset = {
-            Log.d("CollapseOffset", "$it")
-            layoutToolbar.progress = it
+    private fun setUpBottomSheet() {
+        ExtendedBottomSheetBehavior.from(cardPayments).apply {
+            addBottomSheetCallback(cardSlideCallback)
+            setNoHalfStateExpandedOffset(100)
         }
     }
 
-    private val cardSlideCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+    private val cardSlideCallback = object : ExtendedBottomSheetBehavior.BottomSheetCallback() {
         val interpolator = DecelerateInterpolator()
-        var prevOffset = -1f
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
             val fraction = interpolator.getInterpolation(slideOffset)
             containerPanelActions.alpha = 1 - fraction
             containerPanelActions.translationY = 300 * fraction
-            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_DRAGGING) {
-                if (prevOffset < slideOffset) {
-                    if (bottomSheetBehavior.isFitToContents) {
-                        bottomSheetBehavior.isFitToContents = false
-                        bottomSheetBehavior.setExpandedOffset(100)
-                    }
-                } else {
-                    if (!bottomSheetBehavior.isFitToContents) {
-                        bottomSheetBehavior.isFitToContents = true
-                        bottomSheetBehavior.setExpandedOffset(0)
-                    }
-                }
-            }
-            prevOffset = slideOffset
+            layoutContent.progress = slideOffset
         }
 
         override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -77,7 +63,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     class PaymentAdapter: RecyclerView.Adapter<PaymentViewHolder>() {
-
         var paymentItems: List<String> = listOf()
             set(value) {
                 field = value

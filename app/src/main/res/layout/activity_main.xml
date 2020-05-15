@@ -7,33 +7,31 @@
     android:background="@color/colorAccent"
     tools:context=".MainActivity">
 
-    <com.funrisestudio.uipack.CollapsibleToolbar
-        android:id="@+id/layoutToolbar"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/bottom_sheet_peek_height"
         android:fitsSystemWindows="false"
-        android:minHeight="100dp"
-        app:layout_behavior=".CustomToolbarBehavior"
-        app:layoutDescription="@xml/motion_balance_details"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+        app:layoutDescription="@xml/motion_balance_details">
 
         <TextView
             android:id="@+id/tvBalance"
-            android:text="500.00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:textColor="@android:color/white"/>
+            android:text="500.00"
+            android:textColor="@android:color/white"
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/tvBalanceDetails"
-            android:text="Balance description: 500.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@android:color/black" />
+            android:text="Balance description: 500.0"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
 
-    </com.funrisestudio.uipack.CollapsibleToolbar>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardPayments"
@@ -41,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:behavior_hideable="false"
-        app:behavior_peekHeight="300dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+        app:layout_behavior=".ExtendedBottomSheetBehavior">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPayments"
@@ -55,16 +53,16 @@
         android:id="@+id/containerPanelActions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/cardPayments"
-        app:layout_anchorGravity="center_horizontal"
         android:layout_gravity="top|center_horizontal"
-        android:paddingBottom="20dp">
+        android:paddingBottom="20dp"
+        app:layout_anchor="@id/cardPayments"
+        app:layout_anchorGravity="center_horizontal">
 
         <FrameLayout
             android:id="@+id/panelActions"
             android:layout_width="220dp"
             android:layout_height="80dp"
-            android:background="@android:color/black"/>
+            android:background="@android:color/black" />
 
     </FrameLayout>
 
