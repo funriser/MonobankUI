@@ -4,32 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".MainActivity">
+    android:background="@drawable/cc_bg"
+    tools:context=".CollapsibleContentActivity">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/bottom_sheet_peek_height"
-        android:fitsSystemWindows="false"
         app:layoutDescription="@xml/motion_balance_details">
 
         <TextView
             android:id="@+id/tvBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="500.00"
-            android:textColor="@android:color/white"
-            android:textSize="32sp" />
+            android:textAppearance="@style/CC_Header"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/tvBalanceDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Balance description: 500.0"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btnAction1"
+            style="@style/CC_Button.Action"
+            android:src="@drawable/ic_arrow_collapse_down"
+            app:layout_constraintBottom_toTopOf="@id/tvActionDescription1"
+            app:layout_constraintEnd_toEndOf="@id/tvActionDescription1"
+            app:layout_constraintStart_toStartOf="@id/tvActionDescription1"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvActionDescription1"
+            style="@style/CC_Text.ActionDescription"
+            android:layout_marginTop="@dimen/cc_mrg_small"
+            android:text="@string/cc_top_up_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnAction2"
+            style="@style/CC_Button.Action"
+            android:src="@drawable/ic_arrow_expand_right"
+            app:layout_constraintBottom_toTopOf="@id/tvActionDescription2"
+            app:layout_constraintEnd_toEndOf="@id/tvActionDescription2"
+            app:layout_constraintStart_toStartOf="@id/tvActionDescription2"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvActionDescription2"
+            style="@style/CC_Text.ActionDescription"
+            android:layout_marginTop="@dimen/cc_mrg_small"
+            android:text="@string/cc_transfer_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvActionDescription3"
+            app:layout_constraintStart_toEndOf="@id/tvActionDescription1" />
+
+        <ImageButton
+            android:id="@+id/btnAction3"
+            style="@style/CC_Button.Action"
+            android:src="@drawable/ic_plus"
+            app:layout_constraintBottom_toTopOf="@id/tvActionDescription3"
+            app:layout_constraintEnd_toEndOf="@id/tvActionDescription3"
+            app:layout_constraintStart_toStartOf="@id/tvActionDescription3"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvActionDescription3"
+            style="@style/CC_Text.ActionDescription"
+            android:layout_marginTop="@dimen/cc_mrg_small"
+            android:text="@string/cc_other_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -42,28 +91,51 @@
         app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
         app:layout_behavior=".ExtendedBottomSheetBehavior">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPayments"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layoutHistoryHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/cc_history_header_height"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cc_mrg_medium"
+                    android:src="@drawable/img_chart"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:text="@string/cc_history_header"
+                    android:layout_height="wrap_content"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/cc_mrg_medium"
+                    android:src="@drawable/img_magnify"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPayments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
-    <FrameLayout
-        android:id="@+id/containerPanelActions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:paddingBottom="20dp"
-        app:layout_anchor="@id/cardPayments"
-        app:layout_anchorGravity="center_horizontal">
-
-        <FrameLayout
-            android:id="@+id/panelActions"
-            android:layout_width="220dp"
-            android:layout_height="80dp"
-            android:background="@android:color/black" />
-
-    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

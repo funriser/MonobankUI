@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">UIPack</string>
+
+    <string name="cc_balance_details">Balance: %1$s</string>
+    <string name="cc_top_up_description">Top up balance</string>
+    <string name="cc_transfer_description">Transfer</string>
+    <string name="cc_other_description">Other payments</string>
+    <string name="cc_history_header">History</string>
 </resources>

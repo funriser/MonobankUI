@@ -17,10 +17,33 @@
 
     <style name="PackShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">10dp</item>
-        <item name="cornerSizeTopRight">10dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="CC_Header" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="CC_Button.Action" parent="">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@drawable/cc_bg_circle_ripple</item>
+    </style>
+
+    <style name="CC_TextAppearance.ActionDescription" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="CC_Text.ActionDescription" parent="">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/CC_TextAppearance.ActionDescription</item>
+        <item name="android:lines">2</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CC_TextAppearance.Regular" parent="TextAppearance.MaterialComponents.Body2">
+
     </style>
 
 </resources>
