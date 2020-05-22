@@ -2,12 +2,13 @@
 <resources>
     <dimen name="bottom_sheet_peek_height">300dp</dimen>
 
-    <dimen name="cc_mrg_small">3dp</dimen>
-    <dimen name="cc_mrg_medium">15dp</dimen>
-    <dimen name="cc_mrg_large">40dp</dimen>
-    <dimen name="cc_mrg_vertical">20dp</dimen>
+    <dimen name="mrg_small">3dp</dimen>
+    <dimen name="mrg_medium">15dp</dimen>
+    <dimen name="mrg_large">40dp</dimen>
+    <dimen name="mrg_vertical">20dp</dimen>
 
-    <dimen name="cc_panel_action_translation_Y">-110dp</dimen>
-    <dimen name="cc_history_header_elevated_z">5dp</dimen>
-    <dimen name="cc_history_header_height">48dp</dimen>
+    <dimen name="panel_action_translation_Y">-110dp</dimen>
+    <dimen name="history_header_elevated_z">5dp</dimen>
+    <dimen name="history_header_height">48dp</dimen>
+    <dimen name="img_payment_size">44dp</dimen>
 </resources>

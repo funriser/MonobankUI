@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/mrg_medium">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivPayment"
+        android:layout_width="@dimen/img_payment_size"
+        android:layout_height="@dimen/img_payment_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvPayment"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginStart="20dp"
-        android:gravity="center_vertical"
+        android:id="@+id/tvPaymentTitle"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mrg_medium"
+        android:textAppearance="@style/TextAppearance.Title"
+        app:layout_constraintBottom_toTopOf="@id/tvPaymentDetail"
+        app:layout_constraintStart_toEndOf="@id/ivPayment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvPaymentDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mrg_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivPayment"
+        app:layout_constraintTop_toBottomOf="@id/tvPaymentTitle" />
+
+    <TextView
+        android:id="@+id/tvPaymentAmount"
+        style="@style/TextAppearance.Amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,30 +20,38 @@
         <item name="cornerSize">10dp</item>
     </style>
 
-    <style name="CC_Header" parent="TextAppearance.MaterialComponents.Headline3">
+    <style name="Header" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="CC_Button.Action" parent="">
+    <style name="Button.Action" parent="">
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:background">@drawable/cc_bg_circle_ripple</item>
+        <item name="android:background">@drawable/bg_circle_ripple</item>
     </style>
 
-    <style name="CC_TextAppearance.ActionDescription" parent="TextAppearance.MaterialComponents.Body2">
+    <style name="TextAppearance.ActionDescription" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
-    <style name="CC_Text.ActionDescription" parent="">
+    <style name="Text.ActionDescription" parent="">
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/CC_TextAppearance.ActionDescription</item>
+        <item name="android:textAppearance">@style/TextAppearance.ActionDescription</item>
         <item name="android:lines">2</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="CC_TextAppearance.Regular" parent="TextAppearance.MaterialComponents.Body2">
+    <style name="TextAppearance.Regular" parent="TextAppearance.MaterialComponents.Body2">
 
+    </style>
+
+    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Amount" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">sans-serif</item>
     </style>
 
 </resources>

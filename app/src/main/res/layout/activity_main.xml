@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cc_bg"
-    tools:context=".CollapsibleContentActivity">
+    android:background="@drawable/bg"
+    tools:context=".SolobankActivity">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/layoutContent"
@@ -18,7 +18,7 @@
             android:id="@+id/tvBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/CC_Header"
+            android:textAppearance="@style/Header"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -30,7 +30,7 @@
 
         <ImageButton
             android:id="@+id/btnAction1"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             android:src="@drawable/ic_arrow_collapse_down"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription1"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription1"
@@ -39,15 +39,15 @@
 
         <TextView
             android:id="@+id/tvActionDescription1"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:text="@string/cc_top_up_description"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:text="@string/top_up_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/btnAction2"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             android:src="@drawable/ic_arrow_expand_right"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription2"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription2"
@@ -56,16 +56,16 @@
 
         <TextView
             android:id="@+id/tvActionDescription2"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:text="@string/cc_transfer_description"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:text="@string/transfer_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvActionDescription3"
             app:layout_constraintStart_toEndOf="@id/tvActionDescription1" />
 
         <ImageButton
             android:id="@+id/btnAction3"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             android:src="@drawable/ic_plus"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription3"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription3"
@@ -74,9 +74,9 @@
 
         <TextView
             android:id="@+id/tvActionDescription3"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:text="@string/cc_other_description"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:text="@string/other_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -99,7 +99,7 @@
             <LinearLayout
                 android:id="@+id/layoutHistoryHeader"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/cc_history_header_height"
+                android:layout_height="@dimen/history_header_height"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
@@ -107,7 +107,7 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/cc_mrg_medium"
+                    android:layout_marginStart="@dimen/mrg_medium"
                     android:src="@drawable/img_chart"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     tools:ignore="ContentDescription" />
@@ -116,13 +116,13 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:gravity="center"
-                    android:text="@string/cc_history_header"
+                    android:text="@string/history_header"
                     android:layout_height="wrap_content"/>
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/cc_mrg_medium"
+                    android:layout_marginEnd="@dimen/mrg_medium"
                     android:src="@drawable/img_magnify"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     tools:ignore="ContentDescription" />
@@ -132,7 +132,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPayments"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/mrg_small"/>
 
         </LinearLayout>
 

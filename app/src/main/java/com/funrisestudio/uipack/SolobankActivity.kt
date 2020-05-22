@@ -9,13 +9,14 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_payment.view.*
 
-class CollapsibleContentActivity : AppCompatActivity() {
+class SolobankActivity : AppCompatActivity() {
 
     private lateinit var adapter: PaymentAdapter
 
@@ -42,7 +43,7 @@ class CollapsibleContentActivity : AppCompatActivity() {
     private fun initView() {
         val balanceStr = "5 500.55 $"
         tvBalance.text = getBalanceTitle(balanceStr)
-        tvBalanceDetails.text = getString(R.string.cc_balance_details, balanceStr)
+        tvBalanceDetails.text = getString(R.string.balance_details, balanceStr)
         setUpRecycler()
         setUpBottomSheet()
     }
@@ -58,7 +59,7 @@ class CollapsibleContentActivity : AppCompatActivity() {
         rvPayments.layoutManager = LinearLayoutManager(this)
         rvPayments.adapter = adapter
         rvPayments.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            val headerElevatedZ = resources.getDimension(R.dimen.cc_history_header_elevated_z)
+            val headerElevatedZ = resources.getDimension(R.dimen.history_header_elevated_z)
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val offset = recyclerView.computeVerticalScrollOffset()
                 if (offset <= 100) {
@@ -68,7 +69,7 @@ class CollapsibleContentActivity : AppCompatActivity() {
                 }
             }
         })
-        populatePayments()
+        adapter.paymentItems = PaymentItem.randomList(this)
     }
 
     private fun setUpBottomSheet() {
@@ -89,16 +90,8 @@ class CollapsibleContentActivity : AppCompatActivity() {
         }
     }
 
-    private fun populatePayments() {
-        val paymentItems = mutableListOf<String>()
-        for (i in 0..200) {
-            paymentItems.add(i, "Item $i")
-        }
-        adapter.paymentItems = paymentItems
-    }
-
     class PaymentAdapter: RecyclerView.Adapter<PaymentViewHolder>() {
-        var paymentItems: List<String> = listOf()
+        var paymentItems: List<PaymentItem> = listOf()
             set(value) {
                 field = value
                 notifyDataSetChanged()
@@ -114,7 +107,13 @@ class CollapsibleContentActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: PaymentViewHolder, position: Int) {
-            holder.itemView.tvPayment.text = paymentItems[position]
+            val paymentItem = paymentItems[position]
+            with(holder.itemView) {
+                tvPaymentTitle.text = paymentItem.title
+                tvPaymentDetail.text = paymentItem.description
+                tvPaymentAmount.text = paymentItem.amount
+                ivPayment.setImageDrawable(ContextCompat.getDrawable(context, paymentItem.img))
+            }
         }
     }
 

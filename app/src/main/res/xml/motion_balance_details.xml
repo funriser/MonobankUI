@@ -12,7 +12,7 @@
             android:id="@+id/tvBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cc_mrg_large"
+            android:layout_marginStart="@dimen/mrg_large"
             android:scaleX="1.0"
             android:scaleY="1.0"
             app:layout_constraintBottom_toTopOf="@id/btnAction1"
@@ -23,56 +23,56 @@
             android:id="@+id/tvBalanceDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cc_mrg_large"
+            android:layout_marginStart="@dimen/mrg_large"
             android:alpha="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvBalance" />
 
         <Constraint
             android:id="@+id/btnAction1"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription1"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription1"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription1" />
 
         <Constraint
             android:id="@+id/tvActionDescription1"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginStart="@dimen/cc_mrg_large"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:layout_marginBottom="@dimen/cc_mrg_vertical"
+            style="@style/Text.ActionDescription"
+            android:layout_marginStart="@dimen/mrg_large"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:layout_marginBottom="@dimen/mrg_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
             android:id="@+id/btnAction2"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription2"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription2"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription2" />
 
         <Constraint
             android:id="@+id/tvActionDescription2"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:layout_marginBottom="@dimen/cc_mrg_vertical"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:layout_marginBottom="@dimen/mrg_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvActionDescription3"
             app:layout_constraintStart_toEndOf="@id/tvActionDescription1" />
 
         <Constraint
             android:id="@+id/btnAction3"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription3"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription3"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription3" />
 
         <Constraint
             android:id="@+id/tvActionDescription3"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:layout_marginEnd="@dimen/cc_mrg_large"
-            android:layout_marginBottom="@dimen/cc_mrg_vertical"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:layout_marginEnd="@dimen/mrg_large"
+            android:layout_marginBottom="@dimen/mrg_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -99,61 +99,61 @@
 
         <Constraint
             android:id="@+id/btnAction1"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             android:alpha="0.0"
-            android:translationY="@dimen/cc_panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_Y"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription1"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription1"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription1" />
 
         <Constraint
             android:id="@+id/tvActionDescription1"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginStart="@dimen/cc_mrg_large"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:layout_marginBottom="@dimen/cc_mrg_vertical"
+            style="@style/Text.ActionDescription"
+            android:layout_marginStart="@dimen/mrg_large"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:layout_marginBottom="@dimen/mrg_vertical"
             android:alpha="0.0"
-            android:translationY="@dimen/cc_panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_Y"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
             android:id="@+id/btnAction2"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             android:alpha="0.0"
-            android:translationY="@dimen/cc_panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_Y"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription2"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription2"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription2" />
 
         <Constraint
             android:id="@+id/tvActionDescription2"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:layout_marginBottom="@dimen/cc_mrg_vertical"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:layout_marginBottom="@dimen/mrg_vertical"
             android:alpha="0.0"
-            android:translationY="@dimen/cc_panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_Y"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvActionDescription3"
             app:layout_constraintStart_toEndOf="@id/tvActionDescription1" />
 
         <Constraint
             android:id="@+id/btnAction3"
-            style="@style/CC_Button.Action"
+            style="@style/Button.Action"
             android:alpha="0.0"
-            android:translationY="@dimen/cc_panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_Y"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription3"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription3"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription3" />
 
         <Constraint
             android:id="@+id/tvActionDescription3"
-            style="@style/CC_Text.ActionDescription"
-            android:layout_marginTop="@dimen/cc_mrg_small"
-            android:layout_marginEnd="@dimen/cc_mrg_large"
-            android:layout_marginBottom="@dimen/cc_mrg_vertical"
+            style="@style/Text.ActionDescription"
+            android:layout_marginTop="@dimen/mrg_small"
+            android:layout_marginEnd="@dimen/mrg_large"
+            android:layout_marginBottom="@dimen/mrg_vertical"
             android:alpha="0.0"
-            android:translationY="@dimen/cc_panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_Y"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </ConstraintSet>
