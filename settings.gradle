@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='UIPack'
+rootProject.name='MonobankUI'
