@@ -1,4 +1,4 @@
-package com.funrisestudio.uipack;
+package com.funrisestudio.monobankui;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

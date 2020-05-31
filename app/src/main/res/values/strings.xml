@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UIPack</string>
+    <string name="app_name">Monobank UI</string>
 
     <string name="balance_details">Balance: %1$s</string>
     <string name="top_up_description">Top up balance</string>

@@ -1,4 +1,4 @@
-package com.funrisestudio.uipack
+package com.funrisestudio.monobankui
 
 import org.junit.Test
 

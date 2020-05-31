@@ -1,6 +1,6 @@
 @file:Suppress("SameParameterValue")
 
-package com.funrisestudio.uipack
+package com.funrisestudio.monobankui
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
