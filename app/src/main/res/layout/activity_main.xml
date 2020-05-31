@@ -32,59 +32,41 @@
             android:id="@+id/btnAction1"
             style="@style/Button.Action"
             android:src="@drawable/ic_arrow_collapse_down"
-            app:layout_constraintBottom_toTopOf="@id/tvActionDescription1"
-            app:layout_constraintEnd_toEndOf="@id/tvActionDescription1"
-            app:layout_constraintStart_toStartOf="@id/tvActionDescription1"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvActionDescription1"
             style="@style/Text.ActionDescription"
             android:layout_marginTop="@dimen/mrg_small"
-            android:text="@string/top_up_description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/top_up_description" />
 
         <ImageButton
             android:id="@+id/btnAction2"
             style="@style/Button.Action"
             android:src="@drawable/ic_arrow_expand_right"
-            app:layout_constraintBottom_toTopOf="@id/tvActionDescription2"
-            app:layout_constraintEnd_toEndOf="@id/tvActionDescription2"
-            app:layout_constraintStart_toStartOf="@id/tvActionDescription2"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvActionDescription2"
             style="@style/Text.ActionDescription"
-            android:layout_marginTop="@dimen/mrg_small"
-            android:text="@string/transfer_description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tvActionDescription3"
-            app:layout_constraintStart_toEndOf="@id/tvActionDescription1" />
+            android:text="@string/transfer_description" />
 
         <ImageButton
             android:id="@+id/btnAction3"
             style="@style/Button.Action"
             android:src="@drawable/ic_plus"
-            app:layout_constraintBottom_toTopOf="@id/tvActionDescription3"
-            app:layout_constraintEnd_toEndOf="@id/tvActionDescription3"
-            app:layout_constraintStart_toStartOf="@id/tvActionDescription3"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvActionDescription3"
             style="@style/Text.ActionDescription"
-            android:layout_marginTop="@dimen/mrg_small"
-            android:text="@string/other_description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/other_description" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardPayments"
-        style="@style/PackCardView"
+        style="@style/AppCardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:behavior_hideable="false"

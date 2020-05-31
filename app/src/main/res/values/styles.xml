@@ -11,11 +11,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar" >
     </style>
 
-    <style name="PackCardView" parent="Widget.MaterialComponents.CardView">
-        <item name="shapeAppearance">@style/PackShapeAppearance</item>
+    <style name="AppCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/AppShapeAppearance</item>
     </style>
 
-    <style name="PackShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    <style name="AppShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
     </style>
@@ -25,8 +25,8 @@
     </style>
 
     <style name="Button.Action" parent="">
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
         <item name="android:background">@drawable/bg_circle_ripple</item>
     </style>
 
@@ -37,6 +37,7 @@
     <style name="Text.ActionDescription" parent="">
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/mrg_small</item>
         <item name="android:textAppearance">@style/TextAppearance.ActionDescription</item>
         <item name="android:lines">2</item>
         <item name="android:gravity">center</item>

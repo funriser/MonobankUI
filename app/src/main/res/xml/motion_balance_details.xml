@@ -79,6 +79,7 @@
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+
         <Constraint
             android:id="@+id/tvBalance"
             android:layout_width="wrap_content"
@@ -88,6 +89,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <Constraint
             android:id="@+id/tvBalanceDetails"
             android:layout_width="wrap_content"
@@ -101,7 +103,7 @@
             android:id="@+id/btnAction1"
             style="@style/Button.Action"
             android:alpha="0.0"
-            android:translationY="@dimen/panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_y"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription1"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription1"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription1" />
@@ -113,7 +115,7 @@
             android:layout_marginTop="@dimen/mrg_small"
             android:layout_marginBottom="@dimen/mrg_vertical"
             android:alpha="0.0"
-            android:translationY="@dimen/panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_y"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -121,7 +123,7 @@
             android:id="@+id/btnAction2"
             style="@style/Button.Action"
             android:alpha="0.0"
-            android:translationY="@dimen/panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_y"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription2"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription2"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription2" />
@@ -132,7 +134,7 @@
             android:layout_marginTop="@dimen/mrg_small"
             android:layout_marginBottom="@dimen/mrg_vertical"
             android:alpha="0.0"
-            android:translationY="@dimen/panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_y"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvActionDescription3"
             app:layout_constraintStart_toEndOf="@id/tvActionDescription1" />
@@ -141,7 +143,7 @@
             android:id="@+id/btnAction3"
             style="@style/Button.Action"
             android:alpha="0.0"
-            android:translationY="@dimen/panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_y"
             app:layout_constraintBottom_toTopOf="@id/tvActionDescription3"
             app:layout_constraintEnd_toEndOf="@id/tvActionDescription3"
             app:layout_constraintStart_toStartOf="@id/tvActionDescription3" />
@@ -153,9 +155,10 @@
             android:layout_marginEnd="@dimen/mrg_large"
             android:layout_marginBottom="@dimen/mrg_vertical"
             android:alpha="0.0"
-            android:translationY="@dimen/panel_action_translation_Y"
+            android:translationY="@dimen/panel_action_translation_y"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
     </ConstraintSet>
 
 </MotionScene>

@@ -7,7 +7,7 @@
     <dimen name="mrg_large">40dp</dimen>
     <dimen name="mrg_vertical">20dp</dimen>
 
-    <dimen name="panel_action_translation_Y">-110dp</dimen>
+    <dimen name="panel_action_translation_y">-110dp</dimen>
     <dimen name="history_header_elevated_z">5dp</dimen>
     <dimen name="history_header_height">48dp</dimen>
     <dimen name="img_payment_size">44dp</dimen>
