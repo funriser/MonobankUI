@@ -214,6 +214,8 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
     @State
     private int state = STATE_COLLAPSED;
 
+    private int lastStableState = STATE_COLLAPSED;
+
     @Nullable
     private
     ViewDragHelper viewDragHelper;
@@ -334,6 +336,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
         } else {
             this.state = ss.state;
         }
+        updateLastStableState(this.state);
     }
 
     @Override
@@ -613,7 +616,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
         } else if (hideable && shouldHide(child, getYVelocity())) {
             top = parentHeight;
             targetState = STATE_HIDDEN;
-        } else if (lastNestedScrollDy == 0) {
+        } else if (lastNestedScrollDy == 0 && halfExpandedEnabled) {
             int currentTop = child.getTop();
             if (fitToContents) {
                 if (Math.abs(currentTop - fitToContentsOffset) < Math.abs(currentTop - collapsedOffset)) {
@@ -625,7 +628,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                 }
             } else {
                 if (currentTop < halfExpandedOffset) {
-                    if (!halfExpandedEnabled && currentTop < Math.abs(currentTop - collapsedOffset)) {
+                    if (currentTop < Math.abs(currentTop - collapsedOffset)) {
                         top = expandedOffset;
                         targetState = STATE_EXPANDED;
                     } else {
@@ -633,7 +636,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                         targetState = STATE_HALF_EXPANDED;
                     }
                 } else {
-                    if (halfExpandedEnabled && Math.abs(currentTop - halfExpandedOffset) < Math.abs(currentTop - collapsedOffset)) {
+                    if (Math.abs(currentTop - halfExpandedOffset) < Math.abs(currentTop - collapsedOffset)) {
                         top = halfExpandedOffset;
                         targetState = STATE_HALF_EXPANDED;
                     } else {
@@ -649,12 +652,22 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
             } else {
                 // Settle to nearest height.
                 int currentTop = child.getTop();
-                if (halfExpandedEnabled && Math.abs(currentTop - halfExpandedOffset) < Math.abs(currentTop - collapsedOffset)) {
-                    top = halfExpandedOffset;
-                    targetState = STATE_HALF_EXPANDED;
+                if (!halfExpandedEnabled) {
+                    if (currentTop < halfExpandedOffset && lastStableState == STATE_COLLAPSED) {
+                        top = expandedOffset;
+                        targetState = STATE_EXPANDED;
+                    } else {
+                        top = collapsedOffset;
+                        targetState = STATE_COLLAPSED;
+                    }
                 } else {
-                    top = collapsedOffset;
-                    targetState = STATE_COLLAPSED;
+                    if (Math.abs(currentTop - halfExpandedOffset) < Math.abs(currentTop - collapsedOffset)) {
+                        top = halfExpandedOffset;
+                        targetState = STATE_HALF_EXPANDED;
+                    } else {
+                        top = collapsedOffset;
+                        targetState = STATE_COLLAPSED;
+                    }
                 }
             }
         }
@@ -992,10 +1005,17 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                     || state == STATE_HALF_EXPANDED
                     || (hideable && state == STATE_HIDDEN)) {
                 this.state = state;
+                updateLastStableState(state);
             }
             return;
         }
         settleToStatePendingLayout(state);
+    }
+
+    private void updateLastStableState(int state) {
+        if (state == STATE_COLLAPSED || state == STATE_EXPANDED) {
+            lastStableState = state;
+        }
     }
 
     private void settleToStatePendingLayout(@State int state) {
@@ -1035,6 +1055,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
             return;
         }
         this.state = state;
+        updateLastStableState(state);
 
         if (viewRef == null) {
             return;
@@ -1339,7 +1360,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                             top = halfExpandedOffset;
                             targetState = STATE_HALF_EXPANDED;
                         }
-                    } else if (yvel == 0.f || Math.abs(xvel) > Math.abs(yvel)) {
+                    } else if ((yvel == 0.f || Math.abs(xvel) > Math.abs(yvel)) && halfExpandedEnabled) {
                         // If the Y velocity is 0 or the swipe was mostly horizontal indicated by the X velocity
                         // being greater than the Y velocity, settle to the nearest correct height.
                         int currentTop = releasedChild.getTop();
@@ -1354,7 +1375,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                             }
                         } else {
                             if (currentTop < halfExpandedOffset) {
-                                if (!halfExpandedEnabled && currentTop < Math.abs(currentTop - collapsedOffset)) {
+                                if (currentTop < Math.abs(currentTop - collapsedOffset)) {
                                     top = expandedOffset;
                                     targetState = STATE_EXPANDED;
                                 } else {
@@ -1362,7 +1383,7 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                                     targetState = STATE_HALF_EXPANDED;
                                 }
                             } else {
-                                if (halfExpandedEnabled && Math.abs(currentTop - halfExpandedOffset)
+                                if (Math.abs(currentTop - halfExpandedOffset)
                                         < Math.abs(currentTop - collapsedOffset)) {
                                     top = halfExpandedOffset;
                                     targetState = STATE_HALF_EXPANDED;
@@ -1379,13 +1400,23 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                         } else {
                             // Settle to the nearest correct height.
                             int currentTop = releasedChild.getTop();
-                            if (halfExpandedEnabled && Math.abs(currentTop - halfExpandedOffset)
-                                    < Math.abs(currentTop - collapsedOffset)) {
-                                top = halfExpandedOffset;
-                                targetState = STATE_HALF_EXPANDED;
+                            if (!halfExpandedEnabled) {
+                                if (currentTop < halfExpandedOffset && lastStableState == STATE_COLLAPSED) {
+                                    top = expandedOffset;
+                                    targetState = STATE_EXPANDED;
+                                } else {
+                                    top = collapsedOffset;
+                                    targetState = STATE_COLLAPSED;
+                                }
                             } else {
-                                top = collapsedOffset;
-                                targetState = STATE_COLLAPSED;
+                                if (Math.abs(currentTop - halfExpandedOffset)
+                                        < Math.abs(currentTop - collapsedOffset)) {
+                                    top = halfExpandedOffset;
+                                    targetState = STATE_HALF_EXPANDED;
+                                } else {
+                                    top = collapsedOffset;
+                                    targetState = STATE_COLLAPSED;
+                                }
                             }
                         }
                     }
