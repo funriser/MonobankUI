@@ -605,12 +605,22 @@ public class ExtendedBottomSheetBehavior<V extends View> extends CoordinatorLayo
                 targetState = STATE_EXPANDED;
             } else {
                 int currentTop = child.getTop();
-                if (halfExpandedEnabled && currentTop > halfExpandedOffset) {
-                    top = halfExpandedOffset;
-                    targetState = STATE_HALF_EXPANDED;
+                if (!halfExpandedEnabled) {
+                    if (currentTop > expandedOffset && lastStableState == STATE_EXPANDED) {
+                        top = collapsedOffset;
+                        targetState = STATE_COLLAPSED;
+                    } else {
+                        top = expandedOffset;
+                        targetState = STATE_EXPANDED;
+                    }
                 } else {
-                    top = expandedOffset;
-                    targetState = STATE_EXPANDED;
+                    if (currentTop > halfExpandedOffset) {
+                        top = halfExpandedOffset;
+                        targetState = STATE_HALF_EXPANDED;
+                    } else {
+                        top = expandedOffset;
+                        targetState = STATE_EXPANDED;
+                    }
                 }
             }
         } else if (hideable && shouldHide(child, getYVelocity())) {
